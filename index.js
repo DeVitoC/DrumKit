@@ -6,12 +6,14 @@ for(var i = 0; i < buttons.length; i++) {
 
 document.addEventListener("keydown", function (event) {
   drumAction(event.key);
+  buttonAnimation(event.key);
 });
 
 function handleClick() {
   var buttonText = this.innerHTML;
 
   drumAction(buttonText);
+  buttonAnimation(buttonText);
 }
 
 
@@ -50,4 +52,13 @@ function drumAction(char) {
       console.log(buttonText);
       break;
   }
+}
+
+function buttonAnimation(buttonKey) {
+  let button = document.querySelector("." + buttonKey);
+  button.classList.add("pressed");
+
+  setTimeout(function () {
+    button.classList.remove("pressed");
+  }, 100)
 }
